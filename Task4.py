@@ -118,7 +118,7 @@ with st.container():
 with st.container():
     st.markdown('<div class="box">', unsafe_allow_html=True)
     st.subheader("Password Validator")
-    password_input = st.text_input("Enter password", type="password")
+    password_input = st.text_input("Enter password")
     if st.button("Validate Password"):
         has_upper = any(ch.isupper() for ch in password_input)
         has_lower = any(ch.islower() for ch in password_input)
@@ -129,6 +129,7 @@ with st.container():
         else:
             st.markdown('<div class="error">Invalid password. Password strength: Weak.</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
