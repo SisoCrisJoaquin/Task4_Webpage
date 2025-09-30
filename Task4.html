@@ -100,7 +100,7 @@
     <form method="post" class="box">
         <h2>Smallest Number Indicator</h2>
         <input type="text" name="numbers_input" placeholder="Enter numbers separated by commas" required>
-        <input type="submit" value="Find Smallest">
+        <input type="submit" value="Start">
         {% if result2 %}<div class="success">{{ result2 }}</div>{% endif %}
         {% if error2 %}<div class="error">{{ error2 }}</div>{% endif %}
     </form>
@@ -113,12 +113,13 @@
         {% if result3 == "success" %}
             <div class="success">Strong password. Account created.</div>
         {% elif result3 == "error" %}
-            <div class="error">Invalid password. Must include uppercase, lowercase, number, and special character.</div>
+            <div class="error">Invalid password. Password strength: Weak.</div>
         {% endif %}
     </form>
 
 </body>
 </html>
+
 
 
 
