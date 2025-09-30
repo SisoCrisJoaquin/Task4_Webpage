@@ -44,7 +44,7 @@ with st.container():
     st.markdown('<div class="box">', unsafe_allow_html=True)
     st.subheader("Smallest Number Indicator")
     numbers_input = st.text_input("Enter numbers separated by commas")
-    if st.button("Find Smallest"):
+    if st.button("Start"):
         try:
             numbers = list(map(int, numbers_input.split(",")))
             smallest = min(numbers)
@@ -68,6 +68,7 @@ with st.container():
         else:
             st.markdown('<div class="result" style="color:red;"> Invalid password. Must include uppercase, lowercase, number, and special character.</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
