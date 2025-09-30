@@ -4,12 +4,15 @@ import string
 # ---- Page Config ----
 st.set_page_config(page_title="Three-point-Hackaton", layout="centered")
 
-# ---- Custom CSS (Formal Look + Background) ----
+# ---- Custom CSS (Matches your HTML design) ----
 st.markdown("""
     <style>
-        /* Set full background color */
+        /* Full background image */
         .stApp {
-            background-color: #f4f6f9; /* Light gray-blue for formal UI */
+            background-image: url("blackboard-background-2268-x-1276-eaxyg9odzdsotzk1.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
         h1 {
@@ -26,6 +29,29 @@ st.markdown("""
             margin: 20px auto;
             max-width: 600px;
             box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .stTextInput>div>div>input, 
+        .stPasswordInput>div>div>input {
+            width: 100% !important;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .stButton>button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            background-color: #004085;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .stButton>button:hover {
+            background-color: #003366;
         }
 
         .result {
@@ -103,6 +129,7 @@ with st.container():
         else:
             st.markdown('<div class="error">Invalid password. Must include uppercase, lowercase, number, and special character.</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
