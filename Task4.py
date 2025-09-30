@@ -1,54 +1,56 @@
 import streamlit as st
 import string
-import base64
-
-# ---- Helper to load local image ----
-def get_base64_of_bin_file(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-img_path = "blackboard-background-2268-x-1276-eaxyg9odzdsotzk1.jpg"
-bin_str = get_base64_of_bin_file(img_path)
 
 # ---- Page Config ----
 st.set_page_config(page_title="Three-point-Hackaton", layout="centered")
 
-# ---- Custom CSS ----
-st.markdown(f"""
+# ---- Custom CSS (Dark theme fix) ----
+st.markdown("""
     <style>
         /* Full background image */
-        .stApp {{
-            background: url("data:image/jpg;base64,{bin_str}") no-repeat center center fixed;
+        .stApp {
+            background-image: url("blackboard-background-2268-x-1276-eaxyg9odzdsotzk1.jpg");
             background-size: cover;
-        }}
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
 
-        h1 {{
-            color: #1a1a1a;
+        h1 {
+            color: #ffffff;
             text-align: center;
             font-family: "Segoe UI", Arial, sans-serif;
             font-weight: 700;
-        }}
+        }
 
-        .box {{
-            background: #ffffff;
+        .box {
+            background: rgba(0,0,0,0.6); /* semi-transparent box */
             padding: 25px;
             border-radius: 12px;
             margin: 20px auto;
             max-width: 600px;
-            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-        }}
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.5);
+        }
 
+        /* Inputs (remove white background) */
         .stTextInput>div>div>input, 
-        .stPasswordInput>div>div>input {{
+        .stPasswordInput>div>div>input {
             width: 100% !important;
             padding: 10px;
             border-radius: 6px;
-            border: 1px solid #ccc;
+            border: 1px solid #444;
             font-size: 14px;
-        }}
+            background-color: #2b2b2b; /* dark background */
+            color: #ffffff; /* white text */
+        }
 
-        .stButton>button {{
+        /* Placeholder text */
+        .stTextInput>div>div>input::placeholder,
+        .stPasswordInput>div>div>input::placeholder {
+            color: #aaaaaa;
+        }
+
+        /* Buttons */
+        .stButton>button {
             padding: 10px 18px;
             border: none;
             border-radius: 6px;
@@ -56,13 +58,14 @@ st.markdown(f"""
             color: white;
             font-size: 14px;
             cursor: pointer;
-        }}
+        }
 
-        .stButton>button:hover {{
+        .stButton>button:hover {
             background-color: #003366;
-        }}
+        }
 
-        .result {{
+        /* Results */
+        .result {
             margin-top: 12px;
             font-size: 16px;
             font-weight: 600;
@@ -70,30 +73,29 @@ st.markdown(f"""
             background: #e2e6ea;
             padding: 10px;
             border-radius: 6px;
-        }}
+        }
 
-        .error {{
+        .error {
             margin-top: 12px;
             font-size: 16px;
             font-weight: 600;
-            color: #721c24;
-            background: #f8d7da;
+            color: #f8d7da;
+            background: #721c24;
             padding: 10px;
             border-radius: 6px;
-        }}
+        }
 
-        .success {{
+        .success {
             margin-top: 12px;
             font-size: 16px;
             font-weight: 600;
-            color: #155724;
-            background: #d4edda;
+            color: #d4edda;
+            background: #155724;
             padding: 10px;
             border-radius: 6px;
-        }}
+        }
     </style>
 """, unsafe_allow_html=True)
-
 
 # ---- Title ----
 st.title("Three-point-Hackaton")
@@ -127,7 +129,7 @@ with st.container():
 with st.container():
     st.markdown('<div class="box">', unsafe_allow_html=True)
     st.subheader("Password Validator")
-    password_input = st.text_input("Enter password")
+    password_input = st.text_input("Enter password", type="password")
     if st.button("Validate Password"):
         has_upper = any(ch.isupper() for ch in password_input)
         has_lower = any(ch.islower() for ch in password_input)
@@ -138,6 +140,7 @@ with st.container():
         else:
             st.markdown('<div class="error">Invalid password. Password strength: Weak.</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
