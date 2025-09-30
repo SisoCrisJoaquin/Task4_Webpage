@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Combined Python Programs</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #333; }
+        form { margin-bottom: 30px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        input[type="text"], input[type="password"] { width: 100%; padding: 8px; margin: 8px 0; }
+        input[type="submit"] { padding: 8px 16px; }
+        .result { margin-top: 10px; color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Python Programs Combined</h1>
+
+    <!-- Task 1-->
+    <form method="post">
+        <h2>Count Consonants</h2>
+        <input type="text" name="text_input" placeholder="Enter text here" required>
+        <input type="submit" value="Count Consonants">
+        {% if result1 %}<div class="result">{{ result1 }}</div>{% endif %}
+    </form>
+
+    <!-- Task 2-->
+    <form method="post">
+        <h2>Find Smallest Number</h2>
+        <input type="text" name="numbers_input" placeholder="Enter numbers separated by commas" required>
+        <input type="submit" value="Find Smallest">
+        {% if result2 %}<div class="result">{{ result2 }}</div>{% endif %}
+    </form>
+
+    <!-- Task 3-->
+    <form method="post">
+        <h2>Password Validator</h2>
+        <input type="password" name="password_input" placeholder="Enter password" required>
+        <input type="submit" value="Validate Password">
+        {% if result3 %}<div class="result">{{ result3 }}</div>{% endif %}
+    </form>
+
+</body>
+</html>
