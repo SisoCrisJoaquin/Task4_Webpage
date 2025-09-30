@@ -1,46 +1,54 @@
 import streamlit as st
 import string
+import base64
+
+# ---- Helper to load local image ----
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+img_path = "blackboard-background-2268-x-1276-eaxyg9odzdsotzk1.jpg"
+bin_str = get_base64_of_bin_file(img_path)
 
 # ---- Page Config ----
 st.set_page_config(page_title="Three-point-Hackaton", layout="centered")
 
-# ---- Custom CSS (Matches your HTML design) ----
-st.markdown("""
+# ---- Custom CSS ----
+st.markdown(f"""
     <style>
         /* Full background image */
-        .stApp {
-            background-image: url("blackboard-background-2268-x-1276-eaxyg9odzdsotzk1.jpg");
+        .stApp {{
+            background: url("data:image/jpg;base64,{bin_str}") no-repeat center center fixed;
             background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
+        }}
 
-        h1 {
+        h1 {{
             color: #1a1a1a;
             text-align: center;
             font-family: "Segoe UI", Arial, sans-serif;
             font-weight: 700;
-        }
+        }}
 
-        .box {
+        .box {{
             background: #ffffff;
             padding: 25px;
             border-radius: 12px;
             margin: 20px auto;
             max-width: 600px;
             box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-        }
+        }}
 
         .stTextInput>div>div>input, 
-        .stPasswordInput>div>div>input {
+        .stPasswordInput>div>div>input {{
             width: 100% !important;
             padding: 10px;
             border-radius: 6px;
             border: 1px solid #ccc;
             font-size: 14px;
-        }
+        }}
 
-        .stButton>button {
+        .stButton>button {{
             padding: 10px 18px;
             border: none;
             border-radius: 6px;
@@ -48,13 +56,13 @@ st.markdown("""
             color: white;
             font-size: 14px;
             cursor: pointer;
-        }
+        }}
 
-        .stButton>button:hover {
+        .stButton>button:hover {{
             background-color: #003366;
-        }
+        }}
 
-        .result {
+        .result {{
             margin-top: 12px;
             font-size: 16px;
             font-weight: 600;
@@ -62,9 +70,9 @@ st.markdown("""
             background: #e2e6ea;
             padding: 10px;
             border-radius: 6px;
-        }
+        }}
 
-        .error {
+        .error {{
             margin-top: 12px;
             font-size: 16px;
             font-weight: 600;
@@ -72,9 +80,9 @@ st.markdown("""
             background: #f8d7da;
             padding: 10px;
             border-radius: 6px;
-        }
+        }}
 
-        .success {
+        .success {{
             margin-top: 12px;
             font-size: 16px;
             font-weight: 600;
@@ -82,9 +90,10 @@ st.markdown("""
             background: #d4edda;
             padding: 10px;
             border-radius: 6px;
-        }
+        }}
     </style>
 """, unsafe_allow_html=True)
+
 
 # ---- Title ----
 st.title("Three-point-Hackaton")
@@ -129,6 +138,7 @@ with st.container():
         else:
             st.markdown('<div class="error">Invalid password. Password strength: Weak.</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
