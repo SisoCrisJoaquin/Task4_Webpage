@@ -105,11 +105,11 @@ with st.container():
     st.markdown('<div class="box">', unsafe_allow_html=True)
     st.subheader("Smallest Number Indicator")
     numbers_input = st.text_input("Enter numbers separated by commas")
-    if st.button("Find Smallest"):
+    if st.button("Start"):
         try:
             numbers = list(map(int, numbers_input.split(",")))
             smallest = min(numbers)
-            st.markdown(f'<div class="success">The smallest number is: {smallest}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="success">Indicated Smallest Number: {smallest}</div>', unsafe_allow_html=True)
         except:
             st.markdown('<div class="error">Invalid input. Please enter numbers separated by commas.</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
@@ -127,8 +127,9 @@ with st.container():
         if has_upper and has_lower and has_digit and has_special:
             st.markdown('<div class="success">Strong password. Account created.</div>', unsafe_allow_html=True)
         else:
-            st.markdown('<div class="error">Invalid password. Must include uppercase, lowercase, number, and special character.</div>', unsafe_allow_html=True)
+            st.markdown('<div class="error">Invalid password. Password strength: Weak.</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
