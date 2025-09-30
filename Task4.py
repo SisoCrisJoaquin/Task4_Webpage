@@ -26,7 +26,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---- Title ----
-st.title("Python Programs Combined")
+st.title("Three-point-Hackaton")
 
 # ---- Task 1: Count Consonants ----
 with st.container():
@@ -68,5 +68,6 @@ with st.container():
         else:
             st.markdown('<div class="result" style="color:red;"> Invalid password. Must include uppercase, lowercase, number, and special character.</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
+
 
 
